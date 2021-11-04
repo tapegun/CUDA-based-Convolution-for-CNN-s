@@ -18,9 +18,12 @@ commands:
       # You may modify the commands below. Uncomment/Comment lines based on the milestone
       # - /bin/bash -c "./m1 100"
       # - /bin/bash -c "gprof -Q m1 gmon.out; echo "done2""
-      # - /bin/bash -c "./m2"
+      # - /bin/bash -c "time ./m2 10000"
       # - /bin/bash -c "cuda-memcheck ./m2"
-      - nsys profile --stats=true ./m2
+      # - nsys profile --stats=true ./m2
+      # - nv-nsight-cu-cli profile --stats=true ./m2
+      - nv-nsight-cu-cli --section '.*' -o analysis_file ./m2
+      
       #- /bin/bash -c "./m3"
       # - /bin/bash -c "time ./m1 100"
       # - /bin/bash -c "./m1"
